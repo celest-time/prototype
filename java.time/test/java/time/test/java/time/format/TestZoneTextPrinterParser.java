@@ -42,7 +42,6 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
 import java.util.TimeZone;
-import jdk.testlibrary.RandomFactory;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -63,34 +62,6 @@ public class TestZoneTextPrinterParser extends AbstractTestPrinterParser {
         return new DateTimeFormatterBuilder().appendZoneText(style)
                                              .toFormatter(locale)
                                              .withDecimalStyle(DecimalStyle.of(locale));
-    }
-
-    public void test_printText() {
-        Random r = RandomFactory.getRandom();
-        int N = 8;
-        Locale[] locales = Locale.getAvailableLocales();
-        Set<String> zids = ZoneRulesProvider.getAvailableZoneIds();
-        ZonedDateTime zdt = ZonedDateTime.now();
-
-        //System.out.printf("locale==%d, timezone=%d%n", locales.length, zids.size());
-        while (N-- > 0) {
-            zdt = zdt.withDayOfYear(r.nextInt(365) + 1)
-                     .with(ChronoField.SECOND_OF_DAY, r.nextInt(86400));
-            for (String zid : zids) {
-                if (zid.equals("ROC") || zid.startsWith("Etc/GMT")) {
-                    continue;      // TBD: match jdk behavior?
-                }
-                zdt = zdt.withZoneSameLocal(ZoneId.of(zid));
-                TimeZone tz = TimeZone.getTimeZone(zid);
-                boolean isDST = tz.inDaylightTime(new Date(zdt.toInstant().toEpochMilli()));
-                for (Locale locale : locales) {
-                    printText(locale, zdt, TextStyle.FULL, tz,
-                            tz.getDisplayName(isDST, TimeZone.LONG, locale));
-                    printText(locale, zdt, TextStyle.SHORT, tz,
-                            tz.getDisplayName(isDST, TimeZone.SHORT, locale));
-                }
-            }
-        }
     }
 
     private void printText(Locale locale, ZonedDateTime zdt, TextStyle style, TimeZone zone, String expected) {

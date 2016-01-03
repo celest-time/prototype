@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file:///production/java.time" />
-    <output-test url="file:///test/java.time" />
+    <output url="file://$MODULE_DIR$/out/prod/java.time" />
+    <output-test url="file://$MODULE_DIR$/out/test/java.time" />
+    <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/java/time" isTestSource="true" />
