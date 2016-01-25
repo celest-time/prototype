@@ -13,7 +13,7 @@ matrix:
   allow_failures:
     - php: hhvm
 
-before_script: cd php.time
+before_install: cd php.time
 
 install: composer install --prefer-dist
 script: vendor/bin/phpunit
