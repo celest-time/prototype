@@ -4,5 +4,5 @@ php:
 - 7.0
 - hhvm
 
-install: cd php.time composer install
-script: cd php.time && phpunit Test.php
+install: cd php.time && composer install
+script: cd php.time && phpunit
