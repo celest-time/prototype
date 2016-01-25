@@ -9,7 +9,7 @@ cache:
     - vendor
     - $HOME/.composer/cache
 
-before_install: cd php.time
+before_install: composer self-update && cd php.time
 
 install: composer install --prefer-dist
 script: vendor/bin/phpunit
