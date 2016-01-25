@@ -9,10 +9,6 @@ cache:
     - vendor
     - $HOME/.composer/cache
 
-matrix:
-  allow_failures:
-    - php: hhvm
-
 before_install: cd php.time
 
 install: composer install --prefer-dist
