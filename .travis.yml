@@ -4,5 +4,9 @@ php:
 - 7.0
 - hhvm
 
-install: cd php.time && composer install
-script: cd php.time && phpunit
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+install: cd php.time && composer install --prefer-dist
+script: vendor/bin/phpunit
