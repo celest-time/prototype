@@ -8,5 +8,12 @@ cache:
   directories:
     - vendor
     - $HOME/.composer/cache
-install: cd php.time && composer install --prefer-dist
+
+matrix:
+  allow_failures:
+    - php: hhvm
+
+before_script: cd php.time
+
+install: composer install --prefer-dist
 script: vendor/bin/phpunit
