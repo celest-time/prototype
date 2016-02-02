@@ -6,9 +6,9 @@ php:
 
 cache:
   directories:
-    - vendor
     - $HOME/.composer/cache
-    - dl
+    - php.time/vendor
+    - php.time/dl
 
 before_install: composer self-update && cd php.time
 
