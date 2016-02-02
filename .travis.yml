@@ -8,8 +8,9 @@ cache:
   directories:
     - vendor
     - $HOME/.composer/cache
+    - dl
 
 before_install: composer self-update && cd php.time
 
-install: composer install --prefer-dist
+install: composer install --prefer-dist; make tzdata
 script: vendor/bin/phpunit
