@@ -10,7 +10,7 @@ cache:
     - php.time/vendor
     - php.time/dl
 
-before_install: composer self-update && cd php.time
+before_install: phpenv config-rm xdebug.ini; composer self-update && cd php.time
 
 install: composer install --prefer-dist; make tzdata
 script: vendor/bin/phpunit
